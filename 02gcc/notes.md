@@ -7,7 +7,7 @@
 * gcc -c -fPIC hello_fn.c -o hello_fn.o
 * gcc -shared -fPIC hello_fn.o -o libhello.so
 
-gcc main.c -Wall -L. -lhello -o main
+* gcc main.c -Wall -L. -lhello -o main
 
 # 运行共享库
 * 1.拷贝so
