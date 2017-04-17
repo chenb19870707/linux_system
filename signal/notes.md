@@ -90,7 +90,19 @@ oldset若非空指针，表示改变前的
 sa_handler用于不可靠信号  
 sa_sigaction 可用于可靠信号的注册，不能带参数
 
-sa_mask 屏蔽信号集   
+sa_mask 定在信号处理程序执行过程中，哪些信号应当被阻塞,信号处理函数结束后才会递达。缺省情况下当前信号本身被阻塞，防止信号的嵌套发送
 sa_flags 标志
+
+**传递参数时sa_flags必须设置成SA_SIGINFO**
+```
+    struct sigaction action;
+    action.sa_sigaction = handler;
+    sigaddset(&action.sa_mask,SIGQUIT);
+    action.sa_flags = SA_SIGINFO;
+
+    if(sigaction(SIGINT,&action,NULL)  < 0)
+        ERROR_EXIT("sigaction");
+
+```
 
  [代码示例](sigaction.cpp)

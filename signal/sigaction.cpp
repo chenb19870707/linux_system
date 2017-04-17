@@ -17,17 +17,18 @@ using namespace std;
         exit(EXIT_FAILURE);\
     }while(0)
 
-void handler(int sig)
+void  handler(int sig, siginfo_t * siginfo, void *)
 {
-        printf("recv sigal => %d\n",sig);
+        printf("recv sigal => %d data = %d\n",sig,siginfo->si_int);
+        sleep(5);
 }
 
 int main()
 {
     struct sigaction action;
-    action.sa_handler = handler;
-    sigemptyset(&action.sa_mask);
-    action.sa_flags = 0;
+    action.sa_sigaction = handler;
+    sigaddset(&action.sa_mask,SIGQUIT);
+    action.sa_flags = SA_SIGINFO;
 
     if(sigaction(SIGINT,&action,NULL)  < 0)
         ERROR_EXIT("sigaction");
