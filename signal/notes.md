@@ -71,6 +71,26 @@ oldset若非空指针，表示改变前的
 
  [代码示例](sigpending.cpp)
 
- # sigaction
+ # sigaction 注册信号
+```CPP
+    int sigaction(int signum, const struct sigaction *act,
+                    struct sigaction *oldact);
 
-![alt text](sigaction.png "title")
+    struct sigaction {
+    void     (*sa_handler)(int);
+    void     (*sa_sigaction)(int, siginfo_t *, void *);
+    sigset_t   sa_mask;
+    int        sa_flags;
+    void     (*sa_restorer)(void);
+    };
+                
+```
+
+***sa_handler 和 sa_sigaction 只能使用其一***  
+sa_handler用于不可靠信号  
+sa_sigaction 可用于可靠信号的注册，不能带参数
+
+sa_mask 屏蔽信号集   
+sa_flags 标志
+
+ [代码示例](sigaction.cpp)

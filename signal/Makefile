@@ -1,7 +1,7 @@
 .PHONY=clean all
 CC=g++
 CFLAGS=-Wall -g
-BIN=reentryfunc sigpending
+BIN=reentryfunc sigpending sigaction
 all:$(BIN)
 %.o:%.c
 	$(CC) $(CFLAGS) -c $< -o $@
