@@ -1,19 +1,11 @@
-# man
+# man 章节
 
-1 一般使用者的命令
-
-2 系统调用的命令
-
-3 C语言函数库的命令
-
-4 有关驱动程序和系统设备的解释
-
-5 配置文件的解释
-
-6 游戏程序的命令
-
-7 其他的软件或是程序的命令
-
-8 有关系统维护的命令
-
-n shell内部命令章节号
+1、Standard commands （标准命令）
+2、System calls （系统调用）
+3、Library functions （库函数）
+4、Special devices （设备说明）
+5、File formats （文件格式）
+6、Games and toys （游戏和娱乐）
+7、Miscellaneous （杂项）
+8、Administrative Commands （管理员命令）
+9 其他（Linux特定的）， 用来存放内核例行程序的文档。
